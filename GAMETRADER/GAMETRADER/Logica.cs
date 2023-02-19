@@ -29,6 +29,7 @@ namespace GAMETRADER
         {
             Usuario emisor = Usuarios.Find(x => x.ID == idemisor);
             
+            //Corrección: Tenes que validar que el receptor tenga en su lista de amigos al emisor
             if (emisor.Amigos.Contains(idreceptor)  )
             {
                 return true;
@@ -41,7 +42,6 @@ namespace GAMETRADER
             int IDNOTIFICACION = Notificaciones.Count + 1;
             if (CheckearListaAmigos(idemisor,idreceptor))
             {
-                
                 NuevoChat nuevochat = new NuevoChat(IDNOTIFICACION + 1, titulo, descripcion, idreceptor, DateTime.Today, DateTime.MinValue, idemisor, Chats.Count() + 1);
                 Notificaciones.Add(nuevochat);
                 string nickusuario = emisor.Nickname;
@@ -61,6 +61,8 @@ namespace GAMETRADER
                 return chat;
             }
         }
+
+        //CORRECCIÓN: No podes? Tenes que crear una clase para devolver el mensaje y el bool, con lo cual tenes una unica clase con dos propiedades.
         public string EnviarMensaje(Chat chat, string mensaje)//NO PUEDO RETORNAR 2 TIPOS DE DATOS, SOLO RETORNO EL STRING O EL BOOL
         {
 
@@ -72,6 +74,7 @@ namespace GAMETRADER
             }
             else return ("No se pudo enviar el mensaje porque el chat se encuentra en estado: " + chat.estado);
         }
+        //Corrección: Falta sobreescritura
         public void AceptarSolicitud (int idnotificacion)
         {
             int idreceptor = Notificaciones.Find(x => x.ID == idnotificacion).IDReceptor;

@@ -12,6 +12,7 @@ namespace GAMETRADER
         public int IDEmisor { get; set; }
         public virtual int NumeroChat { get; set; }
 
+        //CORRECCIÓN: No hay constructor por defecto. Si no se pide, no se hace; tampoco inicializa el constructor base
         public SolicictudDeAmistad(int id, string titulo, string descripcion, int idreceptor, DateTime fechaEmision, DateTime fecharecepcion, int idemisor, int nroChat, DateTime Fechaexpiracion)
         {
             this.ID = id;

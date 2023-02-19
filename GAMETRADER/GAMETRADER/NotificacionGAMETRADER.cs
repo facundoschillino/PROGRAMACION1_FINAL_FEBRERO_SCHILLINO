@@ -9,6 +9,8 @@ namespace GAMETRADER
     public class NotificacionGAMETRADER: Notificacion
     {
         public string Link { get; set; }
+
+        //CORRECCIÓN: No hay constructor por defecto. Si no se pide, no se hace; tampoco inicializa el constructor base
         public NotificacionGAMETRADER(int id, string titulo, string descripcion, int idreceptor, DateTime fechaEmision, DateTime fecharecepcion,string link  )
         {
             this.ID = id;
